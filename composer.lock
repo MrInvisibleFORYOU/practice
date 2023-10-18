@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "938a658016bee3aae9df76512e9da0ed",
+    "content-hash": "df2f892a1c7451ca4d59b53a2d08d39b",
     "packages": [
         {
             "name": "brick/math",
@@ -60,6 +60,63 @@
                 }
             ],
             "time": "2023-01-15T23:15:59+00:00"
+        },
+        {
+            "name": "ctsoft/laravel-pretty-pagination",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ctsoft-de/laravel-pretty-pagination.git",
+                "reference": "e3ef071cc7e6760986c4628f636228363198d84b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ctsoft-de/laravel-pretty-pagination/zipball/e3ef071cc7e6760986c4628f636228363198d84b",
+                "reference": "e3ef071cc7e6760986c4628f636228363198d84b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/http": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/pagination": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "php": "^7.2|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CTSoft\\Laravel\\PrettyPagination\\Providers\\PrettyPaginationProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CTSoft\\Laravel\\PrettyPagination\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CTSoft",
+                    "email": "info@ctsoft.de"
+                }
+            ],
+            "description": "Pretty pagination URLs for Laravel.",
+            "keywords": [
+                "laravel",
+                "pagination",
+                "pretty"
+            ],
+            "support": {
+                "issues": "https://github.com/ctsoft-de/laravel-pretty-pagination/issues",
+                "source": "https://github.com/ctsoft-de/laravel-pretty-pagination/tree/v1.2.0"
+            },
+            "time": "2023-09-12T22:26:42+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

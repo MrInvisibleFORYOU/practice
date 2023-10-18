@@ -49,4 +49,9 @@ class User extends Authenticatable
         $user->syncRoles([]);    //this will remove role before assigning so that  user can have only one roles.
         $user->assignRole($role);
     }
+
+    public function BlogReview()
+    {
+        return $this->hasOne(BlogReview::class);
+    }
 }

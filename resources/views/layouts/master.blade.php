@@ -81,9 +81,12 @@
               <p>Settings</p>
             </a>
           </li>
-         
-  
-         
+          <li>
+            <a href={{route('adminAllBlog')}}>
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Blog</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

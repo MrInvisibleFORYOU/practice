@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\adminBlogController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\admin\permissionController;
 use App\Http\Controllers\admin\RolesController;
 use App\Http\Controllers\adminSettingController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\SitemapXmlController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,7 +59,26 @@ Route::put('admin/users/edit/{id}', [DashboardController::class,'saveUser'])->na
 Route::get('admin/users/{id}',[DashboardController::class,'deleteUser'])->name('adminDeleteUser');
 Route::get('admin/settings',[adminSettingController::class,'AllSettings'])->name('adminSettings');
 Route::post('admin/settings',[adminSettingController::class,'saveSettings'])->name('adminSettingsSave');
+
+Route::get('admin/blogs',[adminBlogController::class,'adminAllBlog'])->name('adminAllBlog');
+Route::get('admin/blogs/edit/{id}',[adminBlogController::class,'adminBlogEdit'])->name('adminBlogEdit');
+Route::put('admin/blogs/edit/{id}',[adminBlogController::class,'adminBlogEditSave'])->name('adminBlogEditSave');
+
+Route::prefix('blog')->group(function () {
+    Route::get('/', [BlogController::class,'index'])->name('pretty.paginate')->paginate();
+    Route::get('/{slug}',[BlogController::class,'blog'])->name('blog');
+    Route::post('/reviews',[BlogController::class,'saveReview'])->name('blogReview');
+    Route::post('/search',[BlogController::class,'searchAjax'])->name('blogSearchAjax');
+    Route::post('/searchResult',[BlogController::class,'search'])->name('blogSearch');
+    
 });
+Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
+
+});
+
+
+
+
 Route::get('/notAuthorized',function(){
 return view('notAuthorized');
 });

@@ -5,7 +5,7 @@ use app\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-
+use Illuminate\Support\Facades\Hash;
 class DashboardController extends Controller
 {
     public function AllUser(){
@@ -22,9 +22,10 @@ class DashboardController extends Controller
 
     public function saveUser(Request $request, $id){
         $user=User::find($id);
-        $request->input('password');
+       $password= $request->input('password');
+       $hashedPassword=Hash::make($password);
         $user->fill($request->input());
-       
+       $user->password=$hashedPassword;
         //save in model_has_permission Also
         $roleName=$request->input('usertype');
        $role=Role::findByName($roleName);
