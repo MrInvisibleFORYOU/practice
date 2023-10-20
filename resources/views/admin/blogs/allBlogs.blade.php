@@ -14,6 +14,7 @@ All Blogs
       <div class="card">
         <div class="card-header">
           <h4 class="card-title"> Blogs</h4>
+        
           {{-- <a href="{{route('adminAddRole')}}" class="btn btn-success">Add New Roles</a> --}}
         </div>
         <div class="card-body">
@@ -40,8 +41,9 @@ All Blogs
 
             </tbody>
             @endforeach
-            {{ $blogs->links() }}
+        {{-- {{$blogs->links()}} --}}
           </table>
+         
           </div>
         </div>
       </div>

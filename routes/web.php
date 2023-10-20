@@ -6,9 +6,12 @@ use App\Http\Controllers\admin\permissionController;
 use App\Http\Controllers\admin\RolesController;
 use App\Http\Controllers\adminSettingController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\productsController;
 use App\Http\Controllers\SitemapXmlController;
 use Illuminate\Support\Facades\Route;
 
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,8 +79,11 @@ Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 
 });
 
+Route::get('sendMail',function(){
+    Mail::to('dobriyalgaurav02@gmail.com')->send(new WelcomeMail());
+});
 
-
+Route::get('products',[productsController::class,'index'])->name('products');
 
 Route::get('/notAuthorized',function(){
 return view('notAuthorized');

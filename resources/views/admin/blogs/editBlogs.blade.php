@@ -15,37 +15,26 @@ Edit Blog
            <form action="{{route('adminBlogEditSave',['id'=>$blog->id])}}" method="POST">
             @method('PUT')
             @csrf
+            <input type="text" name="id" value="{{$blog->id}}" hidden selected>
   <div class="form-group">
     <label for="title_blog">Title</label>
-    <input type="email" name="title" class="form-control" id="title_blog" aria-describedby="emailHelp" placeholder="Enter email" value="{{$blog->title}}">
+    <input type="text" name="title" class="form-control" id="title_blog" aria-describedby="emailHelp" placeholder="Enter email" value="{{$blog->title}}">
   </div>
 
-  <div class="form-group mt-4" class="form-group">
-    <label for="title_blog">Content</label>
-    <textarea id="tinymce" name="content" value="{{$blog->content}}"></textarea>
+  <div class="form-group ">
+    <label for="tinymce">Content</label>
+    <input id="tinymce" name="content"  class="form-control" value="{{$blog->content}}">
 </div>
 
-  {{-- <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="text" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{$user->password}}">
-  </div>
-
-  <div class="form-group">
-    <label for="user_type">Role</label>
-    <br>
-    <select class="form-select" id="user_type" name="usertype">
-      <option value="{{$currentRole}}" selected>{{$currentRole}}</option>
-        @foreach($roles as $role)
-        <option value="{{$role->name}}">{{$role->name}}</option>
-        @endforeach
-    </select>
+<div class="form-group">
+  <label for="edit type">Status</label>
+  <br>
+  <select class="form-select" id="draft" name="draft">
+      @for($i=0; $i<count($status); $i++)
+      <option value="{{$status[$i]}}">{{$status[$i]}}</option>
+      @endfor
+  </select>
 </div>
-
-  <div class="form-group">
-    <label for="exampleInputPhone" >Phone number</label>
-    <input type="text" name="phone" class="form-control" id="exampleInputPhone" placeholder="Phone number" value="{{$user->phone}}">
-  </div> --}}
-  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
           </div>
@@ -56,10 +45,10 @@ Edit Blog
   @endsection
 
   @section('scripts')
-  <script src="{!! url('assets/tinymce/js/tinymce.min.js') !!}"></script>
+  <script src="https://cdn.tiny.cloud/1/YOUR_API_KEY/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <script type="text/javascript">
     tinymce.init({
-        selector: 'textarea#tinymce',
+        selector: 'input#tinymce',
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",

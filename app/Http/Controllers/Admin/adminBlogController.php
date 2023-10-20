@@ -15,8 +15,15 @@ class adminBlogController extends Controller
 
     public function adminBlogEdit($id){
         $blog=Blog::where('id',$id)->get()->first();
-    // print_r($blog->title);
-    // exit;
-        return view('admin.blogs.editBlogs')->with(['blog'=>$blog]);
+        $blog_status=['publish','draft'];
+        return view('admin.blogs.editBlogs')->with(['blog'=>$blog,'status'=>$blog_status]);
+    }
+
+    public function adminBlogEditSave(Request $request, $id){
+       $blog= Blog::find($id);
+       $blog->title=$request->title;
+       $blog->content=$request->content;
+       $blog->save();
+       return redirect()->route('adminAllBlog')->with(['success'=>"Blog edited succesfully"]);
     }
 }
